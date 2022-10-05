@@ -15,3 +15,11 @@ forge 'https://forge.puppet.com'
 #mod 'apache',
 #  git:    'https://github.com/puppetlabs/puppetlabs-apache',
 #  branch: 'docs_experiment'
+mod 'puppetlabs/puppet_operational_dashboards', '1.4.0'
+mod 'puppet/grafana', '11.0.0'
+mod 'puppet/telegraf', '4.3.0'
+mod 'puppetlabs/apt', '8.5.0'
+mod 'puppetlabs/inifile', '5.4.0'
+mod 'puppetlabs/influxdb', '1.1.0'
+mod 'puppetlabs/stdlib', '8.4.0'
+mod 'puppet/archive', '6.0.2'

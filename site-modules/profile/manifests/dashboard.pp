@@ -7,9 +7,11 @@ class profile::dashboard {
     { ensure   => 'present',
       provider => 'puppetserver_gem',
       before   => [
-        Class[puppet_operational_dashboards],
-        Class[puppet_operational_dashboards::enterprise_infrastructure]
+        Class['puppet_operational_dashboards'],
+        Class['puppet_operational_dashboards::enterprise_infrastructure']
       ],
+      notify => Service['pe-puppetserver'],
+      
     }
   )
 }

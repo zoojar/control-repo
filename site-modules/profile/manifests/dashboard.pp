@@ -1,6 +1,6 @@
 # operational dashboard
 class profile::dashboard {
-  if $facts['toml-rb_installed-test'] {
+  if $facts['toml-rb_installed'] {
     include puppet_operational_dashboards::enterprise_infrastructure
     include puppet_operational_dashboards
   } else {

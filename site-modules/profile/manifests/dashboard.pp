@@ -17,6 +17,6 @@ class profile::dashboard {
     content => @(EOS)
       #!/bin/bash
       echo toml-rb_installed=`/opt/puppetlabs/bin/puppetserver gem list toml-rb -i`
-    | EOS
+      | EOS
   }
 }

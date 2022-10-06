@@ -1,6 +1,6 @@
 # operational dashboard
 class profile::dashboard {
-  if $facts['toml_gem_installed'] {
+  if $facts['toml-rb_installed-test'] {
     include puppet_operational_dashboards::enterprise_infrastructure
     include puppet_operational_dashboards
   } else {
@@ -10,5 +10,10 @@ class profile::dashboard {
     ensure   => 'present',
     provider => 'puppetserver_gem',
     notify   => Service['pe-puppetserver'],
+  }
+  file { '/opt/puppetlabs/facter/facts.d/toml-rb_installed.sh':
+    ensure  => file,
+    content => '#!/bin/bash\necho toml-rb_installed=`/opt/puppetlabs/bin/puppetserver gem list toml-rb -i`',
+    mode    => '0500',
   }
 }

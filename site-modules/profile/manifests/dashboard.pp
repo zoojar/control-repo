@@ -5,11 +5,11 @@ class profile::dashboard {
     include puppet_operational_dashboards
   } else {
     warning('toml-rb gem is not installed - not managing puppet_operational_dashboards')
-  }
-  package { 'toml-rb':
-    ensure   => 'present',
-    provider => 'puppetserver_gem',
-    notify   => Service['pe-puppetserver'],
+    package { 'toml-rb':
+      ensure   => 'present',
+      provider => 'puppetserver_gem',
+      notify   => Service['pe-puppetserver'],
+    }
   }
   file { '/opt/puppetlabs/facter/facts.d/toml-rb_installed.sh':
     ensure  => file,

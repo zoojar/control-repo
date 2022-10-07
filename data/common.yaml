@@ -1,3 +1,2 @@
 ---
 message: "This node is using common data"
-puppet_operational_dashboards::influxdb_host: puppetserver1.lab.local 

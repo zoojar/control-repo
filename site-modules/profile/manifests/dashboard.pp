@@ -11,8 +11,8 @@ class profile::dashboard {
         default => "/home/${facts['identity']['user']}/.influxdb_token"
       }),
       influxdb_port       => lookup(influxdb::port, undef, undef, 8086),
-      initial_org         => lookup(influxdb::initial_org, undef, undef, 'puppetlabs'),
-      initial_bucket      => lookup(influxdb::initial_bucket, undef, undef, 'puppet_data'),
+      influxdb_org         => lookup(influxdb::initial_org, undef, undef, 'puppetlabs'),
+      influxdb_bucket      => lookup(influxdb::initial_bucket, undef, undef, 'puppet_data'),
       use_ssl             => true,
     }
 

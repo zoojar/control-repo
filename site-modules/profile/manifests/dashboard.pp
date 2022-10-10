@@ -2,11 +2,13 @@
 class profile::dashboard {
   if $facts['toml-rb_installed'] {
     include puppet_operational_dashboards::enterprise_infrastructure
+    include puppet_operational_dashboards
     class { 'puppet_operational_dashboards::telegraf::agent':
       influxdb_host => 'puppetserver1.lab.local',
-      token         => Sensitive('KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA==')
+      token         => Sensitive('KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='),
+      require       => Class['puppet_operational_dashboards'],
     }
-    include puppet_operational_dashboards
+x
   } else {
     warning('toml-rb gem is not installed - not managing puppet_operational_dashboards')
     package { 'toml-rb':

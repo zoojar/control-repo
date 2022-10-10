@@ -1,3 +1,4 @@
 ---
 message: "This node is using common data"
 puppet_operational_dashboards::telegraf::agent::influxdb_host: puppetserver1.lab.local 
+puppet_operational_dashboards::telegraf::agent::token: KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA==

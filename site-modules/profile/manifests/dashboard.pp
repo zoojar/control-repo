@@ -1,7 +1,7 @@
 # operational dashboard
 class profile::dashboard (
   Optional[Sensitive[String]] $influxdb_token,
-  Strong $influxdb_token_name,
+  String $influxdb_token_name,
   String $influxdb_host,
   Integer $influxdb_port,
   String $influxdb_org,

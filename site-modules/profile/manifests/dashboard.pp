@@ -93,7 +93,15 @@ class profile::dashboard (
         ],
       }
       include puppet_operational_dashboards::enterprise_infrastructure
-      include puppet_operational_dashboards::profile::dashboards
+      class { 'puppet_operational_dashboards::profile::dashboards':
+        token => undef,
+        use_ssl => true,
+        influxdb_host => $influxdb_host,
+        influxdb_port => $influxdb_port,
+        influxdb_bucket => $influxdb_bucket,
+        telegraf_token_name => 'puppet telegraf token',
+        influxdb_token_file => $influxdb_token_file,
+      }
     }
     class { 'puppet_operational_dashboards::telegraf::agent':
       influxdb_host       => $influxdb_host,

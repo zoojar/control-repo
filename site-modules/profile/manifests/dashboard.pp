@@ -8,28 +8,40 @@ class profile::dashboard (
   String $influxdb_bucket,
   Boolean $use_ssl,
 ) {
-  if $facts['toml-rb_installed'] {
-    include puppet_operational_dashboards::enterprise_infrastructure
-    class { 'puppet_operational_dashboards::telegraf::agent':
-      influxdb_host       => $influxdb_host, # 'puppetserver1.lab.local',
-      token               => $token,         # Sensitive('KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='),
-      token_name          => $token_name,    # 'puppet telegraf token',
-      influxdb_token_file => lookup(influxdb::token_file, undef, undef, $facts['identity']['user'] ? {
-        'root'  => '/root/.influxdb_token',
-        default => "/home/${facts['identity']['user']}/.influxdb_token"
-      }),
-      influxdb_port       => $influxdb_port,  # lookup(influxdb::port, undef, undef, 8086),
-      influxdb_org        => $influxdb_org,   # lookup(influxdb::initial_org, undef, undef, 'puppetlabs'),
-      influxdb_bucket     => $influxdb_bucket, # lookup(influxdb::initial_bucket, undef, undef, 'puppet_data'),
-      use_ssl             => $use_ssl,        # true,
-    }
-
-  } else {
+  unless $facts['toml-rb_installed'] {
     warning('toml-rb gem is not installed - not managing puppet_operational_dashboards')
     package { 'toml-rb':
       ensure   => 'present',
       provider => 'puppetserver_gem',
       notify   => Service['pe-puppetserver'],
+    }
+  } else {
+    include puppet_operational_dashboards::enterprise_infrastructure
+    class { 'puppet_operational_dashboards':
+      influxdb_host         => $influxdb_host,
+      influxdb_port         => $influxdb_port,
+      initial_org           => $influxdb_org,
+      initial_bucket        => $influxdb_bucket,
+      influxdb_token        => $influxdb_token,
+      telegraf_token        => undef,
+      telegraf_token_name   => 'puppet telegraf token',
+      influxdb_token_file   => $facts['identity']['user'] ? {
+          'root'  => '/root/.influxdb_token',
+          default => "/home/${facts['identity']['user']}/.influxdb_token"
+        },
+      manage_telegraf       => false,
+      manage_telegraf_token => true,
+      use_ssl               => true,
+    }
+    class { 'puppet_operational_dashboards::telegraf::agent':
+      influxdb_host   => $influxdb_host,
+      token           => $influxdb_token,        
+      token_name      => $influxdb_token_name,   
+      influxdb_port   => $influxdb_port,
+      influxdb_org    => $influxdb_org,  
+      influxdb_bucket => $influxdb_bucket, 
+      use_ssl         => $use_ssl,
+      require         => Class['puppet_operational_dashboards'],
     }
   }
   file { '/opt/puppetlabs/facter/facts.d/toml-rb_installed.sh':

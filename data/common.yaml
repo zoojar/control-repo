@@ -1,11 +1,10 @@
 ---
 lookup_options:
-  profile::dashboard::token:
+  profile::dashboard::influxdb_token:
     convert_to: "Sensitive"
-
 profile::dashboard::influxdb_host: 'puppetserver1.lab.local'
-profile::dashboard::token: 'KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='
-profile::dashboard::token_name: 'puppet telegraf token'
+profile::dashboard::influxdb_token: 'KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='
+profile::dashboard::influxdb_token_name: 'puppet telegraf token'
 profile::dashboard::influxdb_port: 8086
 profile::dashboard::influxdb_org: 'puppetlabs'
 profile::dashboard::influxdb_bucket: 'puppet_data'

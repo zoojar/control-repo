@@ -97,13 +97,14 @@ class profile::dashboard (
     }
   }
   class { 'puppet_operational_dashboards::telegraf::agent':
-    influxdb_host   => $influxdb_host,
-    token           => $influxdb_token,        
-    token_name      => $influxdb_token_name,   
-    influxdb_port   => $influxdb_port,
-    influxdb_org    => $influxdb_org,  
-    influxdb_bucket => $influxdb_bucket, 
-    use_ssl         => $use_ssl,
+    influxdb_host       => $influxdb_host,
+    token               => $influxdb_token,        
+    token_name          => $influxdb_token_name,
+    influxdb_token_file => $influxdb_token_file, 
+    influxdb_port       => $influxdb_port,
+    influxdb_org        => $influxdb_org,  
+    influxdb_bucket     => $influxdb_bucket,
+    use_ssl             => $use_ssl,
   }
 }
 

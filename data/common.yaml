@@ -1,4 +1,8 @@
 ---
+lookup_options:
+  profile::dashboard::token:
+    convert_to: "Sensitive"
+
 profile::dashboard::influxdb_host: 'puppetserver1.lab.local'
 profile::dashboard::token: 'KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='
 profile::dashboard::token_name: 'puppet telegraf token'

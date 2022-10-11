@@ -1,10 +1,6 @@
 ---
 version: 5
 
-lookup_options:
-  profile::dashboard::token:
-    convert_to: "Sensitive"
-
 defaults:
   datadir: "data"
 

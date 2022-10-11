@@ -1,19 +1,27 @@
 # operational dashboard
-class profile::dashboard {
+class profile::dashboard (
+  Optional[Sensitive[String]] $token,
+  String $token_name,
+  String $influxdb_host,
+  Integer $influxdb_port,
+  String $influxdb_org,
+  String $influxdb_bucket,
+  Boolean $use_ssl,
+) {
   if $facts['toml-rb_installed'] {
     include puppet_operational_dashboards::enterprise_infrastructure
     class { 'puppet_operational_dashboards::telegraf::agent':
-      influxdb_host       => 'puppetserver1.lab.local',
-      token               => Sensitive('KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='),
-      token_name          => 'puppet telegraf token',
+      influxdb_host       => $influxdb_host, # 'puppetserver1.lab.local',
+      token               => $token,         # Sensitive('KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='),
+      token_name          => $token_name,    # 'puppet telegraf token',
       influxdb_token_file => lookup(influxdb::token_file, undef, undef, $facts['identity']['user'] ? {
         'root'  => '/root/.influxdb_token',
         default => "/home/${facts['identity']['user']}/.influxdb_token"
       }),
-      influxdb_port       => lookup(influxdb::port, undef, undef, 8086),
-      influxdb_org         => lookup(influxdb::initial_org, undef, undef, 'puppetlabs'),
-      influxdb_bucket      => lookup(influxdb::initial_bucket, undef, undef, 'puppet_data'),
-      use_ssl             => true,
+      influxdb_port       => $influxdb_port,  # lookup(influxdb::port, undef, undef, 8086),
+      influxdb_org        => $influxdb_org,   # lookup(influxdb::initial_org, undef, undef, 'puppetlabs'),
+      influxdb_bucket     => $influxdb_bucket, # lookup(influxdb::initial_bucket, undef, undef, 'puppet_data'),
+      use_ssl             => $use_ssl,        # true,
     }
 
   } else {

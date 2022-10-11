@@ -1,16 +1,17 @@
 # operational dashboard
 class profile::dashboard (
   Optional[Sensitive[String]] $influxdb_token,
+  Strong $influxdb_token_name,
   String $influxdb_host,
   Integer $influxdb_port,
   String $influxdb_org,
   String $influxdb_bucket,
   Boolean $use_ssl,
-  String $influxdb_token_file = lookup(influxdb::token_file, undef, undef, $facts['identity']['user'] ? {
+) {
+  $influxdb_token_file = lookup(influxdb::token_file, undef, undef, $facts['identity']['user'] ? {
       'root'  => '/root/.influxdb_token',
       default => "/home/${facts['identity']['user']}/.influxdb_token"
-  }),
-) {
+  })
   unless $facts['toml-rb_installed'] {
     warning('toml-rb gem is not installed - not managing puppet_operational_dashboards')
     package { 'toml-rb':

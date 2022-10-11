@@ -59,7 +59,7 @@ class profile::dashboard (
           # Create a token with permissions to read and write timeseries data
       # The influxdb::retrieve_token() function cannot find a token during the catalog compilation which creates it
       #   i.e. it takes two agent runs to become available
-      influxdb_auth { $token_name:
+      influxdb_auth { $influxdb_token_name:
         ensure      => present,
         use_ssl     => $use_ssl,
         org         => $influxdb_org,

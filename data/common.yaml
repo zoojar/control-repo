@@ -1,6 +1,6 @@
 ---
 lookup_options:
-  "^puppet_operational_dashboards::.*token$":
+  "^(puppet_operational_dashboards|influxdb)::(.*)token$":
     convert_to: "Sensitive"
 influxdb::token: 'KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='
 puppet_operational_dashboards::telegraf_token: "%{lookup('influxdb::token')}"

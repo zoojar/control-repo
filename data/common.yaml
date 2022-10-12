@@ -5,3 +5,5 @@ lookup_options:
 influxdb::token: 'KKpcL9OER9UwBnitvBK38hMWRp7aKp9VzkZHSvzovqmXGBBXJcBRXTekskCFL1n-DwJKNJQnI8vmp1R7L6WWwA=='
 puppet_operational_dashboards::telegraf_token: "%{lookup('influxdb::token')}"
 puppet_operational_dashboards::influxdb_host: 'puppetserver1.lab.local'
+puppet_operational_dashboards::manage_influxdb: false
+puppet_operational_dashboards::profile::dashboards::manage_grafana: false

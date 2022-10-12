@@ -28,7 +28,9 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  if $facts['puppet_server'] == $facts['networking']['fqdn'] {
-    include 'role::puppetserver'
+  $role = $facts['networking']['fqdn'] ? {
+    lookup('puppet_operational_dashboards::influxdb_host') => 'dashboard',
+    default                                                => 'puppetserver'
   }
+  include "role::${role}"
 }

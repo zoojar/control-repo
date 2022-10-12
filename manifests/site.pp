@@ -32,5 +32,6 @@ node default {
     lookup('puppet_operational_dashboards::influxdb_host') => 'dashboard',
     default                                                => 'puppetserver'
   }
+  notify { "my role is: ${role}": }
   include "role::${role}"
 }

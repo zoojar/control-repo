@@ -1,4 +1,4 @@
-Facter.add(:toml_rb_gem) do
+Facter.add(:toml_rb_gem_status) do
   confine kernel: 'Linux'
 
   setcode do

@@ -1,15 +1,13 @@
 ---
-lookup_options:
-  puppet_operational_dashboards::telegraf::agent::token:
-    convert_to: "Sensitive"
-
-
 profile::dashboard::agent_only: true
 puppet_operational_dashboards::manage_influxdb: false
 puppet_operational_dashboards::manage_telegraf_token: false
 puppet_operational_dashboards::profile::dashboards::manage_grafana: false
 
 # agent token, manually set here after retrieving from the central dashboard...
+lookup_options:
+  puppet_operational_dashboards::telegraf::agent::token:
+    convert_to: "Sensitive"
 puppet_operational_dashboards::telegraf::agent::token: 'LMFSYGADEyEtu1_utGvHKSTmVs4Di25WQFlpRomdcYFYXDxP0eTpDHiXMNnqPeYFdNSGFjyHZK57y5HNF9M5ig=='
 puppet_operational_dashboards::telegraf::agent::token_name: 'puppet telegraf token'
 puppet_operational_dashboards::telegraf::agent::influxdb_token_file: '/root/.influxdb_token'

@@ -12,7 +12,7 @@ class profile::dashboard (
   } else {
     warning('toml-rb gem is not installed - not managing puppet_operational_dashboards')
     package { 'toml-rb':
-      ensure   => 'present',
+      ensure   => '2.1.1',
       provider => 'puppetserver_gem',
       notify   => Service['pe-puppetserver'],
     }

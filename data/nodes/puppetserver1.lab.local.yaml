@@ -1,4 +1,6 @@
 ---
 role: dashboard
+profile::dashboard::agent_only: false
 puppet_operational_dashboards::manage_influxdb: true
 puppet_operational_dashboards::profile::dashboards::manage_grafana: true
+puppet_operational_dashboards::manage_telegraf_token: true

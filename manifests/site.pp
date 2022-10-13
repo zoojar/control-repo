@@ -28,10 +28,7 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  $role = $facts['networking']['fqdn'] ? {
-    lookup('puppet_operational_dashboards::influxdb_host') => 'dashboard',
-    default                                                => 'puppetserver'
-  }
+  $role = lookup('role')
   notify { "my role is: ${role}": }
   include "role::${role}"
 }

@@ -1,3 +1,4 @@
 ---
+role: dashboard
 #puppet_operational_dashboards::manage_influxdb: true
 #puppet_operational_dashboards::profile::dashboards::manage_grafana: true

@@ -1,4 +1,5 @@
 ---
+role: puppetserver
 #lookup_options:
 #  "^(puppet_operational_dashboards|influxdb)::(.*)token$":
 #    convert_to: "Sensitive"

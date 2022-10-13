@@ -1,8 +1,14 @@
 # operational dashboard
-class profile::dashboard {
-   if $facts['toml-rb_installed'] {
+class profile::dashboard (
+  Boolean $agent_only = true,
+) {
+  if $facts['toml-rb_installed'] {
     include puppet_operational_dashboards::enterprise_infrastructure
-    include puppet_operational_dashboards
+    unless $agent_only {
+      include puppet_operational_dashboards
+    } else {
+      include 'puppet_operational_dashboards::telegraf::agent'
+    }
   } else {
     warning('toml-rb gem is not installed - not managing puppet_operational_dashboards')
     package { 'toml-rb':

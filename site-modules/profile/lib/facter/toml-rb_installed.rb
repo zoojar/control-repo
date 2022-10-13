@@ -1,7 +1,6 @@
-Facter.add('powerstates') do
+Facter.add('toml-rb_installed') do
   confine kernel: 'Linux'
-  cmd = 'echo toml-rb_installed=`/opt/puppetlabs/bin/puppetserver gem list toml-rb -i`'
   setcode do
-    Facter::Core::Execution.execute(cmd)
+    Facter::Core::Execution.execute('/opt/puppetlabs/bin/puppetserver gem list toml-rb -i')
   end
 end

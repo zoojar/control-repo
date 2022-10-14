@@ -5,3 +5,7 @@ puppet_operational_dashboards::manage_influxdb: true
 puppet_operational_dashboards::profile::dashboards::manage_grafana: true
 puppet_operational_dashboards::manage_telegraf_token: true
 puppet_operational_dashboards::telegraf_token: ~
+lookup_options:
+  puppet_operational_dashboards::telegraf::agent::token:
+    convert_to: "Undef"
+puppet_operational_dashboards::telegraf::agent::token: ~

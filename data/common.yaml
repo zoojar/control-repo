@@ -1,2 +1,6 @@
 ---
 role: puppetserver
+lookup_options:
+  puppet_operational_dashboards::telegraf::agent::token:
+    convert_to: "Sensitive"
+puppet_operational_dashboards::telegraf::agent::token: '2Ms-qAq8ZqGT4YORxAZDEYif2iSwgiW45Gc8IdER0UBUyuNOXGNX4b2AM1bI1QmUMSV6ee8PUQh7bTxpH6bOdw=='

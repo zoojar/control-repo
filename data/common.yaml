@@ -2,20 +2,7 @@
 role: puppetserver
 # agent token, manually set here after retrieving from the central dashboard...
 lookup_options:
-  puppet_operational_dashboards::telegraf::agent::token:
+  profile::dashboard_agent::telegraf_agent_token:
     convert_to: "Sensitive"
-puppet_operational_dashboards::telegraf::agent::token: '0lYzm8PVtJLhjyVV-mlnFV9loYPo29v0bJ16XKPItnA2i0JKLBVpgI4_SRrGms4q5hLXHX7lnqeho9duNKF3Gg=='
-profile::dashboard::agent_only: true
-puppet_operational_dashboards::manage_influxdb: false
-puppet_operational_dashboards::manage_telegraf_token: false
-puppet_operational_dashboards::profile::dashboards::manage_grafana: false
-
-
-
-puppet_operational_dashboards::telegraf::agent::token_name: 'puppet telegraf token'
-puppet_operational_dashboards::telegraf::agent::influxdb_token_file: '/root/.influxdb_token'
-puppet_operational_dashboards::telegraf::agent::influxdb_host: 'puppetserver1.lab.local'
-puppet_operational_dashboards::telegraf::agent::influxdb_port: 8086
-puppet_operational_dashboards::telegraf::agent::influxdb_bucket: 'puppet_data'
-puppet_operational_dashboards::telegraf::agent::influxdb_org: 'puppetlabs'
-puppet_operational_dashboards::telegraf::agent::use_ssl: true
+profile::dashboard_agent::telegraf_agent_token: '0lYzm8PVtJLhjyVV-mlnFV9loYPo29v0bJ16XKPItnA2i0JKLBVpgI4_SRrGms4q5hLXHX7lnqeho9duNKF3Gg=='
+profile::dashboard_agent::influxdb_host: 'puppetserver1.lab.local'

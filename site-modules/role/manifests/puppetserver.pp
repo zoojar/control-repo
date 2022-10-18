@@ -1,4 +1,4 @@
 # puppetserver
 class role::puppetserver {
-  include profile::dashboard
+  include profile::telegraf_agent
 }

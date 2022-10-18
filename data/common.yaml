@@ -4,5 +4,5 @@ role: puppetserver
 lookup_options:
   profile::dashboard_agent::telegraf_agent_token:
     convert_to: "Sensitive"
-profile::dashboard_agent::telegraf_agent_token: '0lYzm8PVtJLhjyVV-mlnFV9loYPo29v0bJ16XKPItnA2i0JKLBVpgI4_SRrGms4q5hLXHX7lnqeho9duNKF3Gg=='
+profile::dashboard_agent::telegraf_agent_token: 'nSN9bRmOyj68-ea7Krrz8sCdcHbtoCVT0wG_7iIfkC54CKPm_BTd2uRszky_eZzJe0nnK6iHNfRujS32Lh6ShA=='
 profile::dashboard_agent::influxdb_host: 'puppetserver1.lab.local'

@@ -4,7 +4,7 @@ role: puppetserver
 lookup_options:
   puppet_operational_dashboards::telegraf::agent::token:
     convert_to: "Sensitive"
-puppet_operational_dashboards::telegraf::agent::token: 'g5Rpf9E3__flvngW7I8Fu5AGnUClbaEVeHaCSy82QOCmzLFM2PUdaT5YDtCarXtQTiuc32U7KvVkXzJpIjCc3A=='
+puppet_operational_dashboards::telegraf::agent::token: '0lYzm8PVtJLhjyVV-mlnFV9loYPo29v0bJ16XKPItnA2i0JKLBVpgI4_SRrGms4q5hLXHX7lnqeho9duNKF3Gg=='
 profile::dashboard::agent_only: true
 puppet_operational_dashboards::manage_influxdb: false
 puppet_operational_dashboards::manage_telegraf_token: false

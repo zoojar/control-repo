@@ -1,5 +1,7 @@
 # puppetserver
 class role::dashboard {
-  include profile::dashboard
-  include profile::dashboard_agent
+  class { 'profile::dashboard':
+    require => Class['profile::dashboard_agent']
+  }
+  class { 'profile::dashboard_agent': }
 }

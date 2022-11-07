@@ -3,7 +3,7 @@ class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token,
   String $influxdb_host,
 ) {
-  include puppet_operational_dashboards::profile::postgres_access
+  include puppet_operational_dashboards::enterprise_infrastructure
   class { 'puppet_operational_dashboards::telegraf::agent':
     token_name          => 'puppet telegraf token',
     token               => $telegraf_agent_token,
@@ -14,10 +14,6 @@ class profile::dashboard_agent (
     influxdb_org        => 'puppetlabs',
     use_ssl             => true,
   }
-  package { 'toml-rb':
-    ensure   => '2.1.1',
-    provider => 'puppetserver_gem',
-    notify   => Service['pe-puppetserver'],
-  }
+
 }
 

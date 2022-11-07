@@ -8,7 +8,9 @@ class profile::dashboard_agent (
     provider => 'puppetserver_gem',
     notify   => Service['pe-puppetserver'],
   }
-  include puppet_operational_dashboards::profile::postgres_access
+  class { 'puppet_operational_dashboards::profile::postgres_access':
+    require  => Package['toml-rb'],
+  }
   class { 'puppet_operational_dashboards::telegraf::agent':
     token_name          => 'puppet telegraf token',
     token               => $telegraf_agent_token,
@@ -18,6 +20,7 @@ class profile::dashboard_agent (
     influxdb_bucket     => 'puppet_data',
     influxdb_org        => 'puppetlabs',
     use_ssl             => true,
+    require             => Package['toml-rb'],
   }
 
 }

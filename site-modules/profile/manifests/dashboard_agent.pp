@@ -3,16 +3,7 @@ class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token,
   String $influxdb_host,
 ) {
-  ensure_packages( {
-    'toml-rb' => {
-      ensure   => '2.1.1',
-      provider => 'puppetserver_gem',
-      notify   => Service['pe-puppetserver'],
-    }
-  } )
-  class { 'puppet_operational_dashboards::enterprise_infrastructure':
-    require => Package['toml-rb'],
-  }
+  include puppet_operational_dashboards::enterprise_infrastructure
   class { 'puppet_operational_dashboards::telegraf::agent':
     token_name          => 'puppet telegraf token',
     token               => $telegraf_agent_token,
@@ -22,6 +13,7 @@ class profile::dashboard_agent (
     influxdb_bucket     => 'puppet_data',
     influxdb_org        => 'puppetlabs',
     use_ssl             => true,
+    require             => Class['puppet_operational_dashboards::enterprise_infrastructure'],
   }
 }
 

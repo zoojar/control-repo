@@ -3,11 +3,6 @@ class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token,
   String $influxdb_host,
 ) {
-  package { 'toml-rb':
-    ensure   => '2.1.1',
-    provider => 'puppetserver_gem',
-    notify   => Service['pe-puppetserver'],
-  }
   class { 'puppet_operational_dashboards::profile::postgres_access':
     require  => Package['toml-rb'],
   }

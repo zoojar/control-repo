@@ -1,5 +1,6 @@
 # puppetserver
 class role::dashboard {
-  include profile::dashboard
-  include profile::dashboard_agent
+  # include profile::dashboard
+  # include profile::dashboard_agent
+  notify {'test':}
 }

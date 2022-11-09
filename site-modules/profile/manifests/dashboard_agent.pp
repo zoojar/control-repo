@@ -10,7 +10,7 @@ class profile::dashboard_agent (
   } else {
     $_telegraf_agent_token = $telegraf_agent_token
     notify { 'test':
-      message => "test: ${test}"
+      message =>$test,
     }
   }
   # puppet_operational_dashboards module uses the to_toml() function,

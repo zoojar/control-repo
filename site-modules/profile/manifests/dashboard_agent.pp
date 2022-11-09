@@ -2,9 +2,13 @@
 class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token = undef,
   String $influxdb_host,
+  String $telegraf_agent_token_file = '/root/.telegraf_agent_token',
 ) {
   $_telegraf_agent_token = $telegraf_agent_token ? {
-    undef   => Sensitive(Deferred(file('/root/.telegraf_agent_token'))),
+    undef   => Deferred(find_file($telegraf_agent_token_file)) ? {
+      /\/\S+/ => Sensitive(Deferred(file($telegraf_agent_token_file))),
+      default => '',
+    },
     default => $telegraf_agent_token,
   }
   # puppet_operational_dashboards module uses the to_toml() function,

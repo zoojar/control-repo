@@ -6,10 +6,12 @@ class profile::dashboard_agent (
 ) {
   $test=Deferred('find_file', [$telegraf_agent_token_file])
   if ($telegraf_agent_token == undef) and (Deferred('find_file', [$telegraf_agent_token_file]) == $telegraf_agent_token_file) {
-    notify {"test": message => $test}
-    #$_telegraf_agent_token = Deferred('file', [$telegraf_agent_token_file])
+    $_telegraf_agent_token = Deferred('file', [$telegraf_agent_token_file])
   } else {
     $_telegraf_agent_token = $telegraf_agent_token
+    notify { 'test':
+      message => "test: ${test}"
+    }
   }
   # puppet_operational_dashboards module uses the to_toml() function,
   # which depends on the toml-rb gem,

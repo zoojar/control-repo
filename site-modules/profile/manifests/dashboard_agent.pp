@@ -1,12 +1,12 @@
 # dashboard agent
 class profile::dashboard_agent (
-  Optional[Sensitive[String]] $telegraf_agent_token = undef,
   String $influxdb_host,
   String $telegraf_agent_token_file = '/root/.telegraf_agent_token',
+  Optional[Sensitive[String]] $telegraf_agent_token = undef,
 ) {
   $_telegraf_agent_token = $telegraf_agent_token ? {
-    undef   => Deferred('find_file', $telegraf_agent_token_file) ? {
-      /\/\S+/ => Sensitive(Deferred('file', $telegraf_agent_token_file)),
+    undef   => Deferred('find_file', [$telegraf_agent_token_file]) ? {
+      /\/\S+/ => Sensitive(Deferred('file', [$telegraf_agent_token_file])),
       default => '',
     },
     default => $telegraf_agent_token,

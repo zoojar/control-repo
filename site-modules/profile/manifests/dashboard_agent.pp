@@ -5,8 +5,8 @@ class profile::dashboard_agent (
   String $telegraf_agent_token_file = '/root/.telegraf_agent_token',
 ) {
   $_telegraf_agent_token = $telegraf_agent_token ? {
-    undef   => Deferred(find_file($telegraf_agent_token_file)) ? {
-      /\/\S+/ => Sensitive(Deferred(file($telegraf_agent_token_file))),
+    undef   => Deferred('find_file', $telegraf_agent_token_file) ? {
+      /\/\S+/ => Sensitive(Deferred('file', $telegraf_agent_token_file)),
       default => '',
     },
     default => $telegraf_agent_token,

@@ -5,6 +5,7 @@ class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token = undef,
 ) {
   if ($telegraf_agent_token == undef) and (Deferred('find_file', [$telegraf_agent_token_file]) != undef) {
+    notify {'test':}
     $_telegraf_agent_token = Deferred('file', [$telegraf_agent_token_file])
   } else {
     $_telegraf_agent_token = $telegraf_agent_token

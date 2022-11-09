@@ -1,0 +1,4 @@
+{
+    "description": "Sets the influxdb token.",
+    "input_method": "environment"
+}

@@ -3,11 +3,18 @@ class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token,
   String $influxdb_host,
 ) {
+  $_telegraf_agent_token = $telegraf_agent_token ? {
+    undef   => Sensitve(Deferred(File('/root/.telegraf_agent_token'))),
+    default => $telegraf_agent_token,
+  }
+  # puppet_operational_dashboards module uses the to_toml() function,
+  # which depends on the toml-rb gem,
+  # this causes compilation to fail unless installed
   if $facts['toml_rb_gem_status']['gem_installed'] {
     include puppet_operational_dashboards::enterprise_infrastructure
     class { 'puppet_operational_dashboards::telegraf::agent':
       token_name          => 'puppet telegraf token',
-      token               => $telegraf_agent_token,
+      token               => $_telegraf_agent_token,
       influxdb_token_file => '/root/.influxdb_token',
       influxdb_host       => $influxdb_host,
       influxdb_port       => 8086,

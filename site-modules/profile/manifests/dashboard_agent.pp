@@ -1,6 +1,6 @@
 # dashboard agent
 class profile::dashboard_agent (
-  Optional[Sensitive[String]] $telegraf_agent_token,
+  Optional[Sensitive[String]] $telegraf_agent_token = undef,
   String $influxdb_host,
 ) {
   $_telegraf_agent_token = $telegraf_agent_token ? {

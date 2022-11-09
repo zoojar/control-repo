@@ -5,7 +5,7 @@ class profile::dashboard_agent (
   Optional[Sensitive[String]] $telegraf_agent_token = undef,
 ) {
   unless ($telegraf_agent_token != undef) or (Deferred('find_file', [$telegraf_agent_token_file]) == undef) {
-    $_telegraf_agent_token = Sensitive(Deferred('file', [$telegraf_agent_token_file]))
+    $_telegraf_agent_token = Deferred('file', [$telegraf_agent_token_file])
   } else {
     $_telegraf_agent_token = ''
   }
@@ -16,7 +16,7 @@ class profile::dashboard_agent (
     include puppet_operational_dashboards::enterprise_infrastructure
     class { 'puppet_operational_dashboards::telegraf::agent':
       token_name          => 'puppet telegraf token',
-      token               => $_telegraf_agent_token,
+      token               => Sensitive($_telegraf_agent_token),
       influxdb_token_file => '/root/.influxdb_token',
       influxdb_host       => $influxdb_host,
       influxdb_port       => 8086,

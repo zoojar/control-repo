@@ -1,4 +1,11 @@
 {
-    "description": "Sets the influxdb token.",
-    "input_method": "environment"
+  "description": "Sets the influxdb token.",
+  "input_method": "stdin",
+  "parameters": {
+      "token": {
+        "description": "The token value",
+        "type": "String[1]",
+        "sensitive": true
+      }
+    }
 }

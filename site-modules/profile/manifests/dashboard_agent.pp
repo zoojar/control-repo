@@ -1,13 +1,12 @@
 # dashboard agent
 class profile::dashboard_agent (
   String $influxdb_host,
-  String $telegraf_agent_token_from_local_file = '/root/.telegraf_agent_token',
   Optional[Sensitive[String]] $telegraf_agent_token = undef,
 ) {
-  unless $telegraf_agent_token_from_local_file == undef {
-    $_telegraf_agent_token = Deferred('file', [$telegraf_agent_token_from_local_file])
-  } else {
-    $_telegraf_agent_token = $telegraf_agent_token
+    $_telegraf_agent_token = $facts['telegraf_agent_token'] ? {
+      undef   => $telegraf_agent_token,
+      default => $facts['telegraf_agent_token'],
+    }
   }
   # puppet_operational_dashboards module uses the to_toml() function,
   # which depends on the toml-rb gem,

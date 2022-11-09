@@ -1,3 +1,4 @@
 #!/opt/puppetlabs/puppet/bin/ruby
-content = File.read('/etc/systemd/system/telegraf.service.d/override.conf')
-puts content.split('Environment="INFLUX_TOKEN=')[1].gsub('"','')
+require 'json'
+params = JSON.parse(STDIN.read)
+content = File.write('/opt/puppetlabs/facter/facts.d/telegraf_agent_token.txt', params['token'])

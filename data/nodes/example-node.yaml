@@ -1,1 +1,9 @@
 ---
+role: puppetserver
+# telegraf_agent_token, manually set here after retrieving from the central dashboard,
+# should be encrypted:
+lookup_options:
+  profile::dashboard_agent::telegraf_agent_token:
+    convert_to: "Sensitive"
+profile::dashboard_agent::telegraf_agent_token: 'LMfL-PUpYKeP_AtD9_fEnsxTm6RC1Mp5SliIO-oX6TvQXTcwSouOi80zVd5upNGV4bFsgrmvH1XMRbYMOXXwbw=='
+profile::dashboard_agent::influxdb_host: 'puppetserver1.lab.local'

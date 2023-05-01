@@ -28,7 +28,4 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  $role = lookup('role')
-  notify { "my role is: ${role}": }
-  include "role::${role}"
 }

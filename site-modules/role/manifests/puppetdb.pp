@@ -1,6 +1,6 @@
 # puppetdb
 class role::puppetdb {
-  include deploy_puppet::base
+  include profile::base
   #include postgresql::globals
   #include postgresql::server
   include puppetdb

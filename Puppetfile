@@ -2,7 +2,7 @@
 # For more information, see https://pup.pt/bolt-modules
 
 # The following directive installs modules to the managed moduledir.
-moduledir '.modules'
+
 
 mod 'puppetlabs-stdlib', '8.6.0'
 mod 'puppetlabs-concat', '7.4.0'

@@ -3,7 +3,7 @@ puppet::puppetmaster: 'primary.local'
 puppetdb::params::confdir: '/etc/puppetlabs/puppet'
 puppetdb::postgresql_ssl_on: true
 puppetdb::database_host: 'puppetdb.local'
-puppetdb::listen_address: '192.168.2.7'
+puppetdb::listen_address: 'puppetdb.local'
 foreman::db_database: foreman
 foreman::db_username: foreman
 foreman::db_password: 'a46a2b34a3c6b54d1897e2ca4c7d71ec'   # encrypt to eyaml

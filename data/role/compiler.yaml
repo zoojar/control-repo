@@ -1,0 +1,7 @@
+---
+puppet::server: true
+puppet::puppetmaster: 'primary.local'
+foreman_proxy::puppet: true
+puppet::server::puppetdb::server: 'puppetdb.local'
+puppet::server_reports: 'foreman,puppetdb'
+puppet::server_storeconfigs: true

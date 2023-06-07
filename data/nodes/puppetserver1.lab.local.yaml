@@ -1,6 +1,0 @@
----
-role: dashboard
-lookup_options:
-  profile::dashboard_agent::telegraf_agent_token:
-    convert_to: "Undef"
-profile::dashboard_agent::telegraf_agent_token: ~

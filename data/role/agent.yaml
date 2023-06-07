@@ -1,0 +1,2 @@
+---
+puppet::puppetmaster: 'compiler1.local' # TODO: change to loadbalancer fqdn

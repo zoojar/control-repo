@@ -1,2 +1,58 @@
 ---
+# puppet::server_external_nodes: '' # override foreman enc - use the default classifier (site.pp)
+foreman_proxy::foreman_base_url: 'https://foreman.local'
+foreman_proxy::oauth_consumer_key: 'YiXK4nFxV4XvvWPZftTZVz28ZmbEx7KQ' # encrypt to eyaml
+foreman_proxy::oauth_consumer_secret: 'fdQWqqipowK3Ap9gYLEAiXWWMTNo6baQ' # encrypt to eyaml
+foreman_proxy::trusted_hosts: [ 'foreman.local' ]
+foreman_proxy::puppetca: false
+foreman::oauth_consumer_key: 'YiXK4nFxV4XvvWPZftTZVz28ZmbEx7KQ'  # encrypt to eyaml
+foreman::oauth_consumer_secret: 'fdQWqqipowK3Ap9gYLEAiXWWMTNo6baQ' # encrypt to eyaml
+foreman::repo::repo: '3.6'
+nginx::puppet_servers:
+  - 'compiler1.local'
+  - 'compiler2.local'
+puppet::autosign: false
+puppet::ca_server: 'primary.local'
+puppet::dns_alt_names: [] 
+puppet::environment: production
+puppet::puppet_environment: 'production'
+puppet::puppetmaster: 'puppetserver.local' # loadbalancer fqdn
+puppet::runinterval: 1800
+puppet::server_ca_allow_sans: false
+puppet::server_ca: false
+puppet::server_common_modules_path: ''  # remove common modules from the codedir - r10k will deploy them
+puppet::server_foreman_url: 'https://foreman.local'
+puppet::server_version: '7.11.0-1focal'
+puppet::server: false
+puppet::version: '7.24.0-1focal'
+r10k::remote: 'git@github.com:zoojar/control-repo.git'
+r10k::ssh_key: '/root/.ssh/r10k'
+r10k::sources:
+  main:
+    remote: "git@github.com:zoojar/control-repo.git"
+    basedir: "/etc/puppetlabs/code/environments"
+    cachedir: "/var/cache/r10k"
+    provider: "puppet_gem"
+r10k::deploy_settings:
+  purge_levels:
+    - "deployment"
+    - "puppetfile"
+    - "environment"
+  generate_types: true
+ssh::config_entries:
+  r10k_github_com:
+    ensure: present
+    path: '/root/.ssh/config'
+    owner: 'root'
+    group: 'root'
+    host: 'github.com'
+    lines:
+      - '  User git'
+      - '  IdentityFile /root/r10k'
+      - '  ForwardX11 no'
+      - '  StrictHostKeyChecking no'
+
+accounts::group_list:
+  puppet: {}
+
 

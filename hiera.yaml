@@ -1,12 +1,12 @@
 ---
 version: 5
 
-defaults:
-  datadir: "data"
+defaults:  # Used for any hierarchy level that omits these keys.
+  datadir: data         # This path is relative to hiera.yaml's directory.
+  data_hash: yaml_data  # Use the built-in YAML backend.
 
 hierarchy:
-  - name: "Yaml backend"
-    data_hash: yaml_data
-    paths:
-      - "nodes/%{trusted.certname}.yaml"
-      - "common.yaml"
+  - name: "role"
+    path: "role/%{facts.role}.yaml"
+  - name: 'common'
+    path: 'common.yaml'

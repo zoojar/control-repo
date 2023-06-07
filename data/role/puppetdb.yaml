@@ -1,0 +1,11 @@
+---
+puppet::puppetmaster: 'primary.local'
+puppetdb::params::confdir: '/etc/puppetlabs/puppet'
+
+#puppetdb::postgresql_ssl_cert_path: /etc/puppetlabs/puppet/ssl/certs/puppetdb.local.pem
+#puppetdb::postgresql_ssl_key_path: /etc/puppetlabs/puppet/ssl/private_keys/puppetdb.local.pem
+#puppetdb::postgresql_ssl_ca_cert_path: /etc/puppetlabs/puppet/ssl/certs/ca.pem
+
+# puppetdb::puppet_conf: '/etc/puppetlabs/puppet/puppet.conf'
+# puppetdb::postgresql_ssl_folder: '/etc/puppetlabs/puppet/ssl'
+puppetdb::postgresql_ssl_on: true

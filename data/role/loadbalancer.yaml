@@ -1,0 +1,5 @@
+---
+puppet::server: false
+puppet::server_ca: false
+foreman_proxy::puppetca: false
+puppet::puppetmaster: 'primary.local'

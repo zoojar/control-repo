@@ -1,0 +1,7 @@
+---
+puppet::puppetmaster: 'primary.local'
+foreman::initial_admin_password: 'admin'
+postgresql::globals::manage_package_repo: true
+foreman::db_host: 'puppetdb.local'
+foreman::db_manage: false
+foreman::db_manage_rake: false

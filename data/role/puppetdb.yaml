@@ -1,7 +1,5 @@
 ---
 puppet::puppetmaster: 'primary.local'
-puppetdb::params::confdir: '/etc/puppetlabs/puppet'
-puppetdb::postgresql_ssl_on: true
 puppetdb::database_host: 'puppetdb.local'
 foreman::db_database: foreman
 foreman::db_username: foreman

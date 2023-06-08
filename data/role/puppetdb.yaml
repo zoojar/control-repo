@@ -5,7 +5,6 @@ puppetdb::database_listen_address: '*'
 puppetdb::database_host: 'puppetdb.local'
 foreman::db_database: foreman
 foreman::db_username: foreman
-foreman::db_password: 'a46a2b34a3c6b54d1897e2ca4c7d71ec'   # encrypt to eyaml
 foreman::db_manage: true
 foreman::dynflow_manage_services: false
 foreman::keycloak: false

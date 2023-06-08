@@ -2,5 +2,5 @@
 class role::puppetdb {
   include profile::base
   include puppetdb
-  #include foreman
+  include foreman
 }

@@ -2,7 +2,6 @@
 puppet::puppetmaster: 'primary.local'
 puppetdb::postgresql_ssl_on: true
 puppetdb::database_listen_address: '*'
-#puppetdb::jdbc_ssl_properties: '?ssl=true&sslrootcert=/etc/puppetlabs/puppet/ssl/certs/ca.pem'
 puppetdb::database_host: 'puppetdb.local'
 foreman::db_database: foreman
 foreman::db_username: foreman

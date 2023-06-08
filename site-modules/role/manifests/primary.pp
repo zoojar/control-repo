@@ -1,6 +1,6 @@
 # puppetserver
 class role::primary {
-  include base
+  include profile::base
   include puppet::server::puppetdb   # for server config
   include r10k
   include ssh

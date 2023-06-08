@@ -5,3 +5,4 @@ postgresql::globals::manage_package_repo: true
 foreman::db_host: 'puppetdb.local'
 foreman::db_manage: false
 foreman::db_manage_rake: false
+foreman::db_root_cert: '/etc/puppetlabs/puppet/ssl/certs/ca.pem'

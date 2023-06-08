@@ -6,10 +6,10 @@ puppetdb::database_host: 'puppetdb.local'
 foreman::db_database: foreman
 foreman::db_username: foreman
 foreman::db_manage: true
-#foreman::dynflow_manage_services: false
-#foreman::keycloak: false
-#foreman::telemetry_prometheus_enabled: false
-#foreman::telemetry_statsd_enabled: false
-#foreman::apache: false
+foreman::dynflow_manage_services: false
+foreman::keycloak: false
+foreman::telemetry_prometheus_enabled: false
+foreman::telemetry_statsd_enabled: false
+foreman::apache: false
 foreman::initial_admin_password: 'admin'
-#foreman::register_in_foreman: false
+foreman::register_in_foreman: false

@@ -7,7 +7,7 @@
 mod 'puppetlabs-stdlib', '8.6.0'
 mod 'puppetlabs-concat', '7.4.0'
 mod 'puppetlabs-inifile', '6.0.0'
-# mod 'ntp', :local => true       # 'puppetlabs-ntp', '10.0.0'
+mod 'ntp', :local => true       # 'puppetlabs-ntp', '10.0.0'
 mod 'puppetlabs-accounts', '8.0.0'
 
 # puppetserver

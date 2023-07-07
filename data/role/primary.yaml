@@ -8,5 +8,6 @@ puppet::autosign: true
 puppet::dns_alt_names: [ 'primary.local', 'puppetserver.local', 'compiler1.local', 'compiler2.local' ]
 puppet::server_ca_allow_sans: true
 puppet::server::puppetdb::server: 'puppetdb.local'
-puppet::server_reports: 'foreman,puppetdb'
-puppet::server_storeconfigs: true
+puppet::server_reports: 'foreman' # ,puppetdb'
+puppet::server_external_nodes: ''
+puppet::server_storeconfigs: false

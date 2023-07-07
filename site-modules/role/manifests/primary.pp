@@ -1,7 +1,7 @@
 # puppetserver - placeholder until foreman groups
 class role::primary {
   include profile::base
-  include puppet::server::puppetdb   # for server config
+  # include puppet::server::puppetdb   # for server config
   include r10k
   include ssh
   include foreman::repo

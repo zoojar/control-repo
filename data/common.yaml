@@ -66,7 +66,7 @@ mcollective_choria::config:
   puppetdb_port: 8081
   middleware_hosts: "primary.local:4222"
 
-  mcollective::site_policies:
+mcollective::site_policies:
   - action: "allow"
     callers: "choria=vagrant.mcollective"
     actions: "*"

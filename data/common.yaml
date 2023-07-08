@@ -72,3 +72,9 @@ mcollective::site_policies:
     actions: "*"
     facts: "*"
     classes: "*"
+mcollective_agent_r10k::policies:
+  - action: "allow"
+    callers: "choria=vagrant.mcollective"
+    actions: "*"
+    facts: "*"
+    classes: "*"

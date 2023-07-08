@@ -4,4 +4,5 @@ class role::compiler {
   # include puppet::server::puppetdb   # for server config
   include r10k
   include ssh
+  include mcollective   # choria for r10k deploys
 }

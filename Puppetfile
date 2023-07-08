@@ -3,6 +3,15 @@
 
 # The following directive installs modules to the managed moduledir.
 
+mod 'choria-choria', '0.29.0'
+mod 'choria-mcollective_choria', '0.21.5'
+mod 'choria-mcollective', '0.14.3'
+mod 'choria-mcollective_agent_puppet', '2.4.1'  
+mod 'choria-mcollective_agent_package', '5.4.0'
+mod 'choria-mcollective_agent_service', '4.0.1'
+mod 'choria-mcollective_agent_filemgr', '2.0.1'
+mod 'choria-mcollective_util_actionpolicy', '3.2.0'
+
 
 mod 'puppetlabs-stdlib', '6.6.0'
 mod 'puppetlabs-concat', '7.4.0'

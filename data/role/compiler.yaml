@@ -6,3 +6,11 @@ puppet::server::puppetdb::server: 'puppetdb.local'
 # puppet::server_reports: 'foreman,puppetdb'
 # puppet::server_storeconfigs: true
 choria::server: true
+choria::server_config:
+  plugin.choria.puppetserver_host: "primary.local"
+  plugin.choria.puppetserver_port: 8140
+  plugin.choria.puppetca_host: "primary.local"
+  plugin.choria.puppetca_port: 8140
+  plugin.choria.puppetdb_host: "puppetdb.local"
+  plugin.choria.puppetdb_port: 8081
+  plugin.choria.middleware_hosts: "primary.local:4222"

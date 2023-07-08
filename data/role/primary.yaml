@@ -13,9 +13,3 @@ puppet::server_external_nodes: ''
 puppet::server_storeconfigs: false
 choria::broker::network_broker: true
 mcollective::client: true
-mcollective::site_policies:
-  - action: "allow"
-    callers: "choria=vagrant.mcollective"
-    actions: "*"
-    facts: "*"
-    classes: "*"

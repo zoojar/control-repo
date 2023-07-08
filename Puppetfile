@@ -4,7 +4,7 @@
 # The following directive installs modules to the managed moduledir.
 
 
-mod 'puppetlabs-stdlib', '8.6.0'
+mod 'puppetlabs-stdlib', '6.6.0'
 mod 'puppetlabs-concat', '7.4.0'
 mod 'puppetlabs-inifile', '6.0.0'
 mod 'puppetlabs-ntp', '10.0.0'

@@ -3,6 +3,7 @@ class role::primary {
   include profile::base
   # include puppet::server::puppetdb   # for server config
   include r10k
+  include r10k::mcollective
   include ssh
   include foreman::repo
   include foreman_proxy

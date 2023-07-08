@@ -16,6 +16,6 @@ mcollective::client: true
 mcollective::site_policies:
   - action: "allow"
     callers: "choria=vagrant.mcollective"
-    actions: "r10k"
+    actions: "*"
     facts: "*"
     classes: "*"

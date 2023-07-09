@@ -11,9 +11,9 @@ puppet::server_ca_allow_sans: true
 #puppet::server_reports: 'foreman,puppetdb'
 #puppet::server_external_nodes: 'foreman'
 #puppet::server_storeconfigs: false
-puppet::server_foreman:        => false,
-puppet::server_reports:        => 'store',
-puppet::server_external_nodes: => '',
+puppet::server_foreman: false
+puppet::server_reports: 'store'
+puppet::server_external_nodes: ''
 
 choria::broker::network_broker: true
 mcollective::client: true

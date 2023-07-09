@@ -7,9 +7,13 @@ puppet::server: true
 puppet::autosign: true 
 puppet::dns_alt_names: [ 'primary.local', 'puppetserver.local', 'compiler1.local', 'compiler2.local' ]
 puppet::server_ca_allow_sans: true
-puppet::server::puppetdb::server: 'puppetdb.local'
-puppet::server_reports: 'foreman' # ,puppetdb'
-puppet::server_external_nodes: ''
-puppet::server_storeconfigs: false
+#puppet::server::puppetdb::server: 'puppetdb.local'
+#puppet::server_reports: 'foreman,puppetdb'
+#puppet::server_external_nodes: 'foreman'
+#puppet::server_storeconfigs: false
+puppet::server_foreman:        => false,
+puppet::server_reports:        => 'store',
+puppet::server_external_nodes: => '',
+
 choria::broker::network_broker: true
 mcollective::client: true

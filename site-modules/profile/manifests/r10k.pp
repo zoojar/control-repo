@@ -1,7 +1,7 @@
 # The base profile should include component modules that will be on all nodes
 class profile::r10k (
-  String $remote,
-  String $ssh_key,
+  String $remote  = 'git@github.com:zoojar/control-repo.git',
+  #String $ssh_key = , 
   String $r10k_user = 'r10k',
 ){
   class { 'sudo':
@@ -25,18 +25,18 @@ class profile::r10k (
   group { $r10k_user:
     ensure => present,
   }
-  file { "/home/${r10k_user}/.ssh":
-    ensure => directory,
-    owner  => $r10k_user,
-    group  => $r10k_user,
-  }
-  file { 'r10k_ssh_key':
-    ensure => file,
-    path   => $ssh_key,
-    owner  => $r10k_user,
-    group  => $r10k_user,
-    mode   => '0600',
-  }
+  #file { "/home/${r10k_user}/.ssh":
+  #  ensure => directory,
+  #  owner  => $r10k_user,
+  #  group  => $r10k_user,
+  #}
+  #file { 'r10k_ssh_key':
+  #  ensure => file,
+  #  path   => $ssh_key,
+  #  owner  => $r10k_user,
+  #  group  => $r10k_user,
+  #  mode   => '0600',
+  #}
   class { 'r10k':
     sources         => {
       'main' => {
@@ -55,17 +55,17 @@ class profile::r10k (
       'generate_types' => true,
     }
   }
-  ssh::config_entry { 'r10k github.com':
-    ensure => present,
-    path   => '/root/.ssh/config',
-    owner  => 'root',
-    group  => 'root',
-    host   => 'github.com',
-    lines  => [
-      '  User git',
-      "  IdentityFile ${ssh_key}",
-      '  ForwardX11 no',
-      '  StrictHostKeyChecking no',
-    ],
-  }
+  #ssh::config_entry { 'r10k github.com':
+  #  ensure => present,
+  #  path   => '/root/.ssh/config',
+  #  owner  => 'root',
+  #  group  => 'root',
+  #  host   => 'github.com',
+  #  lines  => [
+  #    '  User git',
+  #    "  IdentityFile ${ssh_key}",
+  #    '  ForwardX11 no',
+  #    '  StrictHostKeyChecking no',
+  #  ],
+  #}
 }

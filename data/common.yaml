@@ -65,17 +65,16 @@ mcollective_choria::config:
   puppetdb_host: "puppetdb.local"
   puppetdb_port: 8081
   middleware_hosts: "primary.local:4222"
-
-#mcollective::site_policies:
+mcollective::site_policies:
+  - action: "allow"
+    callers: "choria=r10k.mcollective"
+    actions: "*"
+    facts: "*"
+    classes: "*"
+#mcollective_agent_r10k::policy_default: allow
+#mcollective_agent_r10k::policies:   # TEST THIS
 #  - action: "allow"
 #    callers: "choria=vagrant.mcollective"
 #    actions: "*"
 #    facts: "*"
 #    classes: "*"
-mcollective_agent_r10k::policy_default: allow
-mcollective_agent_r10k::policies:   # TEST THIS
-  - action: "allow"
-    callers: "choria=vagrant.mcollective"
-    actions: "*"
-    facts: "*"
-    classes: "*"

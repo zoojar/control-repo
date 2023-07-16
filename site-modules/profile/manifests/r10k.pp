@@ -37,24 +37,6 @@ class profile::r10k (
   #  group  => $r10k_user,
   #  mode   => '0600',
   #}
-  class { 'r10k':
-    sources         => {
-      'main' => {
-        remote   => $remote,
-        basedir  => '/etc/puppetlabs/code/environments',
-        cachedir => '/var/cache/r10k',
-        provider => 'puppet_gem',
-      }
-    },
-    deploy_settings => {
-      'purge_levels'   => [
-        'deployment',
-        'puppetfile',
-        'environment',
-      ],
-      'generate_types' => true,
-    }
-  }
   #ssh::config_entry { 'r10k github.com':
   #  ensure => present,
   #  path   => '/root/.ssh/config',

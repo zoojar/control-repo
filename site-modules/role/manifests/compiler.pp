@@ -6,4 +6,4 @@ class role::compiler {
   include r10k::mcollective
   include ssh
   include mcollective   # choria for r10k deploys
-}
+} 

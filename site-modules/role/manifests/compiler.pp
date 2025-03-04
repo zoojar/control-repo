@@ -5,4 +5,6 @@
 # @example
 #   include role::compiler
 class role::compiler {
+  include profile::base
+  include profile::openvox::compiler
 }
